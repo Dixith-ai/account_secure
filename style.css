@@ -7,15 +7,14 @@
 body {
     font-family: 'Roboto', sans-serif;
     background: radial-gradient(circle, #1e2a38, #0d0d0d);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     color: #e0e0e0;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .container {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,17 +26,17 @@ body {
     margin-bottom: 30px;
     padding: 20px;
     text-align: center;
-    font-size: 18px; /* Slightly larger for better readability */
-    font-weight: 300; /* Lighter font weight for a more elegant appearance */
-    color: #e0e0e0; /* Matches the main text color */
-    max-width: 700px; /* Slightly wider for more content space */
-    line-height: 1.6; /* Improved line spacing for readability */
-    background: rgba(28, 28, 28, 0.7); /* Slightly transparent background to match form container */
-    border-radius: 10px; /* Rounded corners for a modern look */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Subtle shadow for depth */
-    border: 1px solid #333; /* Border to define the area */
-    margin: 20px auto; /* Center the paragraph horizontally */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Enhance readability */
+    font-size: 18px;
+    font-weight: 300;
+    color: #e0e0e0;
+    max-width: 700px;
+    line-height: 1.6;
+    background: rgba(28, 28, 28, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    border: 1px solid #333;
+    margin: 20px auto;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .intro p {
@@ -51,7 +50,7 @@ body {
     border-radius: 20px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
     width: 360px;
-    max-width: 90%; /* Adjust form container width */
+    max-width: 90%;
     position: relative;
     overflow: hidden;
 }
@@ -85,13 +84,14 @@ label:hover {
 
 input {
     margin-bottom: 15px;
-    padding: 12px;
-    font-size: 16px;
+    padding: 16px;
+    font-size: 18px;
     border: 1px solid #333;
     border-radius: 10px;
     background: rgba(40, 40, 40, 0.8);
     color: #f5f5f5;
     transition: border-color 0.3s, background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    width: 100%;
 }
 
 input:focus {
@@ -103,8 +103,8 @@ input:focus {
 }
 
 button {
-    padding: 12px;
-    font-size: 16px;
+    padding: 16px;
+    font-size: 18px;
     background: linear-gradient(135deg, #4caf50, #388e3c);
     color: white;
     border: none;
@@ -129,7 +129,6 @@ button:active:enabled {
     transform: scale(0.95);
 }
 
-/* Fullscreen image styles */
 .fullscreen-image {
     position: fixed;
     top: 0;
@@ -141,7 +140,6 @@ button:active:enabled {
     animation: stutter 2s ease-out forwards, fadeIn 1s ease-out forwards;
 }
 
-/* Keyframes for stuttering effect */
 @keyframes stutter {
     0% {
         transform: scale(1) translateY(0);
@@ -169,7 +167,6 @@ button:active:enabled {
     }
 }
 
-/* Keyframes for fade-in effect */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -179,7 +176,6 @@ button:active:enabled {
     }
 }
 
-/* Intimidating text styles */
 .intimidating-text {
     position: fixed;
     top: 50%;
@@ -187,17 +183,16 @@ button:active:enabled {
     transform: translate(-50%, -50%);
     font-size: 3rem;
     font-weight: bold;
-    color: rgb(255, 0, 0); /* Intense red color */
+    color: rgb(255, 0, 0);
     text-shadow: 0 0 10px rgb(247, 0, 255), 0 0 20px rgb(247, 0, 255), 0 0 30px rgb(247, 0, 255);
     opacity: 0;
     animation: flashInOut 2s ease-in-out forwards;
     text-align: center;
     white-space: nowrap;
-    max-width: 90%; /* Ensure it doesn't exceed the screen width */
-    overflow-wrap: break-word; /* Allow text to break and fit on small screens */
+    max-width: 90%;
+    overflow-wrap: break-word;
 }
 
-/* Keyframes for flash effect */
 @keyframes flashInOut {
     0% {
         opacity: 0;
@@ -225,7 +220,6 @@ button:active:enabled {
     }
 }
 
-/* Black screen overlay */
 .black-overlay {
     position: fixed;
     top: 0;
@@ -235,10 +229,9 @@ button:active:enabled {
     background-color: black;
     opacity: 0;
     transition: opacity 0.5s ease;
-    z-index: 1000; /* Ensure it's on top of everything */
+    z-index: 1000;
 }
 
-/* Final text styles */
 .final-text {
     position: fixed;
     top: 50%;
@@ -248,69 +241,76 @@ button:active:enabled {
     font-weight: bold;
     color: white;
     opacity: 0;
-    z-index: 1001; /* Ensure it's above the overlay */
+    z-index: 1001;
     text-align: center;
     white-space: nowrap;
     transition: opacity 2s ease-in-out;
 }
 
-/* Footer styling */
 footer {
     padding: 1rem;
     text-align: center;
     width: 100%;
     background: rgba(28, 28, 28, 0.8);
     border-top: 1px solid #333;
-    position: fixed;
+    position: relative;
     bottom: 0;
     left: 0;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3); /* Add shadow for better visibility */
-    z-index: 100; /* Ensure footer is on top */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
 }
 
-/* Footer paragraph styling */
 footer p {
     margin: 0;
     color: #f2f2f2;
 }
 
-/* Media Queries for Responsive Design */
 @media (max-width: 768px) {
     .container {
-        padding-bottom: 100px; /* Adjust padding for footer overlap on smaller screens */
+        padding-bottom: 80px;
+    }
+
+    .intro {
+        font-size: 16px;
+    }
+
+    .form-container {
+        width: 95%;
+        padding: 20px;
     }
 
     h2 {
         font-size: 22px;
     }
 
-    .fullscreen-image {
-        width: 100%;
-    }
-
-    .intimidating-text {
-        font-size: 2rem; /* Adjust intimidating text size for smaller screens */
-    }
-
-    .final-text {
-        font-size: 1.5rem; /* Adjust final text size for smaller screens */
+    button {
+        font-size: 16px;
+        padding: 14px;
     }
 }
 
 @media (max-width: 480px) {
     .container {
-        padding-bottom: 150px; /* Increase bottom padding for very small screens */
+        padding-bottom: 100px;
+    }
+
+    .intro {
+        font-size: 14px;
+    }
+
+    .form-container {
+        width: 100%;
     }
 
     h2 {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .intimidating-text {
-        font-size: 1.8rem; /* Further adjust for very small screens */
+        font-size: 2.5rem;
     }
 
-    .final-text {
-        font-size: 1.2rem;
+    button {
+        font-size: 14px;
+        padding: 12px;
     }
 }

