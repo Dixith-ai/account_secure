@@ -265,6 +265,7 @@ footer {
     bottom: 0;
     left: 0;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3); /* Add shadow for better visibility */
+    z-index: 100; /* Ensure footer is on top */
 }
 
 /* Footer paragraph styling */
@@ -273,52 +274,43 @@ footer p {
     color: #f2f2f2;
 }
 
-/* Responsive Styles */
+/* Media Queries for Responsive Design */
 @media (max-width: 768px) {
     .container {
-        padding-bottom: 80px; /* Space for the footer on smaller screens */
-    }
-
-    .intro {
-        font-size: 16px; /* Adjusted for medium screens */
-    }
-
-    .form-container {
-        width: 90%; /* Adjusted width for medium screens */
+        padding-bottom: 100px; /* Adjust padding for footer overlap on smaller screens */
     }
 
     h2 {
-        font-size: 22px; /* Smaller heading size */
+        font-size: 22px;
     }
 
-    button {
-        font-size: 14px; /* Smaller button font size */
+    .fullscreen-image {
+        width: 100%;
+    }
+
+    .intimidating-text {
+        font-size: 2rem; /* Adjust intimidating text size for smaller screens */
+    }
+
+    .final-text {
+        font-size: 1.5rem; /* Adjust final text size for smaller screens */
     }
 }
 
 @media (max-width: 480px) {
     .container {
-        padding-bottom: 100px; /* Increased space for footer on very small screens */
-    }
-
-    .intro {
-        font-size: 14px; /* Smaller font size for small screens */
-    }
-
-    .form-container {
-        width: 100%; /* Full width form container */
+        padding-bottom: 150px; /* Increase bottom padding for very small screens */
     }
 
     h2 {
-        font-size: 18px; /* Smaller heading size */
+        font-size: 20px;
     }
 
     .intimidating-text {
-        font-size: 3.0rem; /* Smaller font size for small screens */
-        max-width: 90%; /* Ensure it fits within the screen width */
+        font-size: 1.8rem; /* Further adjust for very small screens */
     }
 
-    button {
-        font-size: 12px; /* Smaller font size for buttons */
+    .final-text {
+        font-size: 1.2rem;
     }
 }
